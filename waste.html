@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Waste Food Management - FC</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+        header { background: green; color: white; text-align: center; padding: 1rem; }
+        .container { padding: 20px; }
+        .section { background: white; padding: 20px; margin: 20px 0; border-radius: 8px; box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1); }
+        h2 { color: green; }
+        .faq { background: #f4f4f4; padding: 10px; border-radius: 5px; cursor: pointer; margin-top: 10px; }
+        .faq-content { display: none; padding: 10px; background: white; border-left: 3px solid green; }
+        .progress-container { background: #ddd; border-radius: 20px; padding: 5px; margin-top: 10px; }
+        .progress-bar { height: 20px; width: 0%; background: green; border-radius: 20px; text-align: center; color: white; font-size: 14px; transition: width 1s; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Waste Food Management - Food Cart</h1>
+    </header>
+
+    <div class="container">
+
+        <div class="section">
+            <h2>🌱 Why Waste Food Management Matters</h2>
+            <p>Food waste is a serious issue that affects the environment, economy, and society. Managing food waste effectively helps reduce landfill waste, provides food for those in need, and supports sustainability.</p>
+        </div>
+
+        <div class="section">
+            <h2>🔹 Key Strategies</h2>
+
+            <div class="faq" onclick="toggleFAQ(1)">1️⃣ Prevention: Reducing Food Waste at the Source ⬇</div>
+            <div class="faq-content" id="faq1">
+                <p>✅ Better inventory management</p>
+                <p>✅ Proper food storage techniques</p>
+                <p>✅ Educating the community about portion control</p>
+            </div>
+
+            <div class="faq" onclick="toggleFAQ(2)">2️⃣ Redistribution: Donating Edible Surplus Food ⬇</div>
+            <div class="faq-content" id="faq2">
+                <p>✅ Partnering with food banks & shelters</p>
+                <p>✅ Using food rescue programs & apps</p>
+                <p>✅ Setting up community fridges for free food sharing</p>
+            </div>
+
+            <div class="faq" onclick="toggleFAQ(3)">3️⃣ Composting: Returning Nutrients to the Soil ⬇</div>
+            <div class="faq-content" id="faq3">
+                <p>✅ Community compost bins for households</p>
+                <p>✅ Vermicomposting (using worms) for natural breakdown</p>
+                <p>✅ Industrial composting for large-scale waste</p>
+            </div>
+
+            <div class="faq" onclick="toggleFAQ(4)">4️⃣ Innovative Technologies ⬇</div>
+            <div class="faq-content" id="faq4">
+                <p>✅ Biogas generation from food waste</p>
+                <p>✅ AI-powered waste monitoring systems</p>
+                <p>✅ Apps connecting surplus food providers with consumers</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>📊 Waste Reduction Progress</h2>
+            <p>Our community has already reduced food waste by:</p>
+            <div class="progress-container">
+                <div class="progress-bar" id="progress-bar">0%</div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        function toggleFAQ(id) {
+            let content = document.getElementById('faq' + id);
+            content.style.display = (content.style.display === "block") ? "none" : "block";
+        }
+
+        function updateProgress() {
+            let progress = document.getElementById("progress-bar");
+            let currentValue = 0;
+            let targetValue = 75;  // Example progress percentage
+            let interval = setInterval(() => {
+                if (currentValue >= targetValue) {
+                    clearInterval(interval);
+                } else {
+                    currentValue++;
+                    progress.style.width = currentValue + "%";
+                    progress.innerHTML = currentValue + "%";
+                }
+            }, 30);
+        }
+
+        window.onload = updateProgress;
+    </script>
+
+</body>
+</html>

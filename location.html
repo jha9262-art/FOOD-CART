@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CBSFN - Local Market Locations</title>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAsbbEz8_DwXleofvlpYVXSDY3T_NJx81g&callback=initMap" async defer></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 0; padding: 0; }
+        header { background: green; color: white; text-align: center; padding: 1rem; }
+        .container { padding: 20px; text-align: center; }
+        .section { margin: 20px 0; padding: 20px; background: #f4f4f4; border-radius: 5px; }
+        #map { height: 400px; width: 100%; margin-top: 20px; }
+        .city-list { text-align: center; padding: 10px; font-size: 18px; font-weight: bold; color: darkgreen; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>FC  Food Cart</h1>
+    </header>
+
+    <div class="container">
+        <div class="section">
+            <h2>Available Cities</h2>
+            <p>Currently, we have markets in the following cities:</p>
+            <div class="city-list">
+                🌱 New York | 🌱 Los Angeles | 🌱 Chicago
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>Find Local Markets</h2>
+            <p>Select a city to view farmers' markets on the map:</p>
+            <select id="citySelect" onchange="filterMarkets()">
+                <option value="all">All Cities</option>
+                <option value="kaneru Bajar">Kaneru Bajar</option>
+                <option value="panipat">Pani pat</option>
+                <option value="amritsir">Amritsir</option>
+                <option value="all">All Cities</option>
+                <option value="lakhnau bajar">lakhnau</option>
+                <option value="Patna Mandi">Patna Mandi</option>
+                <option value="Delhi">Delhi</option>
+            </select>
+            <div id="map"></div>
+        </div>
+    </div>
+
+    <script>
+        let map;
+        const markets = [
+            { name: "NY Farmers Market", city: "New York", lat: 40.7128, lng: -74.0060 },
+            { name: "LA Organic Market", city: "Los Angeles", lat: 34.0522, lng: -118.2437 },
+            { name: "Chicago Local Market", city: "Chicago", lat: 41.8781, lng: -87.6298 }
+        ];
+        let markers = [];
+
+        function initMap() {
+            map = new google.maps.Map(document.getElementById("map"), {
+                zoom: 4,
+                center: { lat: 39.8283, lng: -98.5795 } // USA Center
+            });
+            addMarkers(markets);
+        }
+
+        function addMarkers(locations) {
+            markers.forEach(marker => marker.setMap(null)); 
+            markers = [];
+
+            locations.forEach(market => {
+                const marker = new google.maps.Marker({
+                    position: { lat: market.lat, lng: market.lng },
+                    map: map,
+                    title: market.name
+                });
+                markers.push(marker);
+            });
+        }
+
+        function filterMarkets() {
+            const city = document.getElementById("citySelect").value;
+            if (city === "all") {
+                addMarkers(markets);
+            } else {
+                const filteredMarkets = markets.filter(m => m.city === city);
+                addMarkers(filteredMarkets);
+            }
+        }
+    </script>
+
+</body>
+</html>

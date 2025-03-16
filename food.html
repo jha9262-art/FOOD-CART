@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Food Listings</title>
+    <link rel="stylesheet" href="styles.css">
+    <script>
+        function toggleSelection(item) {
+            item.classList.toggle("selected");
+        }
+    </script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px;
+            text-align: center;
+        }
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+            margin: 0 15px;
+        }
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-weight: bold;
+        }
+        section {
+            margin: 20px;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            display: inline-block;
+        }
+        .food-list {
+            list-style-type: none;
+            padding: 0;
+        }
+        .food-list li {
+            background: #ddd;
+            margin: 10px;
+            padding: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .food-list li:hover {
+            background: #ccc;
+        }
+        .selected {
+            background: #4CAF50 !important;
+            color: white;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Local Food Listings</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="join.html">Join Us</a></li>
+                <li><a href="food.html">Food Listings</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section>
+        <h2>Available Local Food</h2>
+        <ul class="food-list">
+            <li onclick="toggleSelection(this)">Organic Tomatoes - rs70/lb</li>
+            <li onclick="toggleSelection(this)">Fresh Strawberries - rs300/box</li>
+            <li onclick="toggleSelection(this)">Farm-raised Eggs - rs65/dozen</li>
+            <li onclick="toggleSelection(this)">Locally Sourced Honey - rs800/jar</li>
+            <li onclick="toggleSelection(this)">Organic rice - <rs20></li>
+            <li onclick="toggleSelection(this)">Whole Grain Bread - rs400/loaf</li>
+            <li onclick="toggleSelection(this)">Dal - rs110/kg</li>
+            <li onclick="toggleSelection(this)">Handmade Cheese - rs459/block</li>
+            <li onclick="toggleSelection(this)">Fresh Milk - rs60/liter</li>
+        </ul>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 FC:  | Supporting Local Farmers</p>
+</body>
+</html>
